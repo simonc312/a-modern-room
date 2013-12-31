@@ -4,7 +4,7 @@
 // as demonstrated below:
 require.config({
   paths: {
-   // jquery: 'js/libs/jquery/jquery-min',
+    jquery: 'js/libs/jquery/jquery-min',
     underscore: 'js/libs/underscore/underscore-min',
     backbone: 'js/libs/backbone/backbone',
 

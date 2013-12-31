@@ -3,12 +3,17 @@ define([
   'underscore', 
   'backbone',
   'js/views/todo',
+  'js/views/locationList',
   'text!templates/stats.html'
-  ], function($, _, Backbone, TodoView, statsTemplate){
+  ], function($, _, Backbone, TodoView, LocationListView, statsTemplate){
   var AppView = Backbone.View.extend({
 
     // Instead of generating a new element, bind to the existing skeleton of
     // the App already present in the HTML.
+
+    id: 'main',
+    tagName: 'div',
+    className: 'container-fluid',
     el: $('#todoapp'),
 
     // Our template for the line of statistics at the bottom of the app.

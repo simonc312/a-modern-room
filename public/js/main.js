@@ -28,7 +28,7 @@ require.config({
 
 });
 
-require([ 'js/views/app', 'js/collections/todos' ], function(AppView, AppCollection){
+require([ 'js/views/app', 'js/collections/todos', 'js/collections/actions', 'js/collections/locations' ], function(AppView, AppCollection){
   var app_view = new AppView({
     collection: AppCollection
   });
