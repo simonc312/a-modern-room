@@ -4,6 +4,7 @@ define([
   'backbone',
   'text!templates/location.html'
   ], function($, _, Backbone, locationTemplate){
+  
   var LocationView = Backbone.View.extend({
     tagName: 'li',
     className: 'location',
@@ -29,6 +30,7 @@ define([
 
     open: function() {
       var self = this;
+       alert("Open location");
       return false;
     }
   });

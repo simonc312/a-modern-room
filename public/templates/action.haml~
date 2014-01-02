@@ -1,4 +1,4 @@
-%div {class="action <%= enabled ? 'enabled' : '' %>"}
+%div{:class=> "action <%= enabled ? 'kdajfkdj' : '' %>"}
   %div.display
     %div.action-text 
     %span#action-destroy

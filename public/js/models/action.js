@@ -4,7 +4,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
     action: function() { },
 
   // how long it takes before action can be performed again
-    timeOutDuration: function() {return 2},
+    timeOutDuration: function() {return 3000},
 
     eventDescription: function() {return "Event Description"},
     // Default attributes for the todo.

@@ -1,0 +1,20 @@
+#top-nav li{
+font-size: 24px;
+display: inline;
+padding: 10px;
+}
+
+#top-nav li a:link, a:visited{
+color: black;     /* unvisited link */
+text-decoration: none;
+}
+
+#top-nav li a:hover{
+color: red;     /* unvisited link */
+text-decoration: none;
+}
+
+
+#top-nav {
+
+}

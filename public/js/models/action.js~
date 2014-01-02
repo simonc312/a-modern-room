@@ -1,36 +1,10 @@
-window.Action = Backbone.Model.extend({
-
-  idAttribute: "_id",
-
-  action: function() { },
-
-  // how long it takes before action can be performed again
-  timeOutDuration: function() {return 2},
-
-  eventDescription: function() {return "Event Description"},
-
-  //cost determines what the action requires to perform (perhaps needs to also take in a resource type and subtract it)
-  cost: function(){return 10},
-
-   defaults: function() {
-      return {
-        timeOutDuration: 0,
-        cost: 0,
-        // if the action is not yet enabled don't show the action in action table
-        enabled: true,
-        order: Actions.nextOrder()
-      };
-  }
-});
-
-
 define(['underscore', 'backbone'], function(_, Backbone) {
   var ActionModel = Backbone.Model.extend({
     
     action: function() { },
 
   // how long it takes before action can be performed again
-    timeOutDuration: function() {return 2},
+    timeOutDuration: function() {return 3},
 
     eventDescription: function() {return "Event Description"},
     // Default attributes for the todo.

@@ -1,22 +1,19 @@
 //LocationListView takes in collection of locations
-define(['jquery','underscore','backbone','js/views/location'], function($,_,Backbone,locationView) {
-  var LocationListView = Backbone.View.extend({
-// figure out how to actually match a .top-nav in AppView 
-    el: '.top-nav',
+define(['jquery','underscore','backbone','js/views/location'], function($,_,Backbone,LocationView) {
+  var LocationListView = Backbone.View.extend({ 
+    el: '#top-nav',
     tagName: 'ul',
-    className: 'nav nav-list lists-nav',
 
     events: {
     },
 
     initialize: function() {
-      this.collection.on('add', this.render, this);
+      this.listenTo(this.collection, 'add', this.render);
     },
 
     render: function() {
       var $el = $(this.el)
       , self = this;
-
       this.collection.each(function(location) {
       var item, sidebarItem;
       item = new LocationView({ model: location });

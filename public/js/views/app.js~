@@ -3,9 +3,12 @@ define([
   'underscore', 
   'backbone',
   'js/views/todo',
+  'js/views/action',
   'js/views/locationList',
+  'js/collections/actions',
   'text!templates/stats.html'
-  ], function($, _, Backbone, TodoView, statsTemplate){
+  ], function($, _, Backbone, TodoView, ActionView, LocationListView, ActionsCollection, statsTemplate){
+  alert(ActionView);
   var AppView = Backbone.View.extend({
 
     // Instead of generating a new element, bind to the existing skeleton of
@@ -34,6 +37,7 @@ define([
       this.input    = this.$("#new-todo");
 
       this.listenTo(this.collection, 'add', this.addOne);
+      this.listenTo(ActionsCollection, 'add', this.addOneAction);
       this.listenTo(this.collection, 'reset', this.addAll);
       this.listenTo(this.collection, 'all', this.render);
 
@@ -56,6 +60,10 @@ define([
     addOne: function(todo) {
       var view = new TodoView({model: todo});
       this.$('#todo-list').append(view.render().el);
+    },
+    addOneAction: function(action) {
+      var view = new ActionView({model: action});
+      this.$('#action-list').append(view.render().el);
     },
 
     // Add all items in the **Todos** collection at once.

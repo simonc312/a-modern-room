@@ -1,9 +1,15 @@
-define(['text!templates/location.html'], function(template) {
+define([
+  'jquery', 
+  'underscore', 
+  'backbone',
+  'text!templates/location.html'
+  ], function($, _, Backbone, locationTemplate){
+  _.templateSettings = { interpolate : /{{(.+?)}}/g };
   var LocationView = Backbone.View.extend({
     tagName: 'li',
     className: 'location',
 
-    template: _.template(template),
+    template: _.template(locationTemplate),
 
     events: {
       'click': 'open'
@@ -24,6 +30,7 @@ define(['text!templates/location.html'], function(template) {
 
     open: function() {
       var self = this;
+       alert("Open location");
       return false;
     }
   });

@@ -2,7 +2,7 @@ define([
   'jquery', 
   'underscore', 
   'backbone',
-  'text!templates/action.haml'
+  'text!templates/action.html'
   ], function($, _, Backbone, ActionTemplate){
   var ActionView = Backbone.View.extend({
 
@@ -14,8 +14,8 @@ define([
 
     // The DOM events specific to an item.
     events: {
-      "click div.Action-content" : "perform",
-      "click span.Action-destroy"   : "clear"
+      "click div.action-content" : "perform",
+      "click span.action-destroy"   : "clear"
     },
 
     // The ActionView listens for changes to its model, re-rendering. Since there's
@@ -39,17 +39,20 @@ define([
     },
 
     cacheInput: function() {
-      this.$input = this.$('.Action-input');
+      this.$input = this.$('.action-input');
     },
 
     // Switch this view into `"performing"` mode, display grey progress bar
-    performing: function() {
+    perform: function() {
       this.$el.addClass('performing')
+      var temp = this.$el
+      this.close(temp);
     },
 
-    // Close the `"performing"` mode
-    close: function() {
-      this.$el.removeClass('performing');
+    // Close the `"performing"` mode after timeOutDuration 
+    close: function(el) {
+      setTimeout(function(){el.removeClass('performing');},this.model.timeOutDuration());
+      
     },
 
 
