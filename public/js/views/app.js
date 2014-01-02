@@ -24,7 +24,6 @@ define([
     // Delegated events for creating new items, and clearing completed ones.
     events: {
       "keypress #new-todo":  "createOnEnter",
-      "keyup #new-todo":     "showTooltip",
       "click .todo-clear a": "clearCompleted"
     },
 
@@ -50,7 +49,7 @@ define([
       this.$('#todo-stats').html(this.statsTemplate({
         total:      this.collection.length,
         done:       this.collection.done().length,
-        remaining:  this.collection.remaining().length
+        remaining:  this.collection.remaining().length,
       }));
     },
 
@@ -91,19 +90,6 @@ define([
     clearCompleted: function() {
       _.each(this.collection.done(), function(todo){ todo.clear(); });
       return false;
-    },
-
-    // Lazily show the tooltip that tells you to press `enter` to save
-    // a new todo item, after one second.
-    showTooltip: function() {
-      var tooltip = this.$('.ui-tooltip-top'),
-          val = this.input.val(),
-          show;
-      tooltip.fadeOut();
-      if (this.tooltipTimeout) clearTimeout(this.tooltipTimeout);
-      if (val === '' || val === this.input.attr('placeholder')) return;
-      show = function(){ tooltip.show().fadeIn(); };
-      this.tooltipTimeout = _.delay(show, 1000);
     }
 
   });

@@ -1,6 +1,7 @@
-<div class="action {{enabled}}">
+<div class="action <%= enabled ? 'enabled' : '' %>">
   <div class="display">
     <div class="action-content"><%- content %></div>
+    <span class="action-helper">Cost: <%= cost %></span>
     <span class="action-destroy"></span>
   </div>
 </div>

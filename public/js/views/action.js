@@ -15,6 +15,8 @@ define([
     // The DOM events specific to an item.
     events: {
       "click div.action-content" : "perform",
+      "hover div.action-content" : "showActionHelper",
+      "mouseout div.action-content" : "hideActionHelper",
       "click span.action-destroy"   : "clear"
     },
 
@@ -62,6 +64,17 @@ define([
       this.stopListening();
       this.undelegateEvents();
       this.$el.remove();
+    },
+
+    showActionHelper: function(){
+      var helper = this.$el.find('.action-helper').first(),
+        show;
+      helper.fadeIn();
+    },
+    hideActionHelper: function(){
+      var helper = this.$el.find('.action-helper').first(),
+        show;
+      helper.fadeOut();
     },
 
     // Remove the item, destroy the model.

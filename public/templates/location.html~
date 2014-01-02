@@ -1,1 +1,1 @@
-<a href="#" class="location-title" data-location-id="{{id}}">{{content}}</a>
+<a href="#" class="location-content" data-location-id="<%= id %>"><%- content %></a>
