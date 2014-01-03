@@ -10,7 +10,8 @@ require.config({
     // storage has built in support for requirejs
     // hence, it doesn't need to configured in 'shim'
     storage: 'js/libs/backbone/backbone.localStorage',
-    text: 'js/libs/require/text'
+    text: 'js/libs/require/text',
+    cprogress: 'js/libs/cprogress/cprogress'
   },
 
   shim: {
@@ -35,6 +36,7 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/todos', 'js/co
     this.views.app = new AppView({collection: this.collections.todos});
     this.views.locationList = new LocationListView({collection: this.collections.locations});
     this.collections.actions.create({content: "Restart the computer", order:this.collections.actions.nextOrder(), enabled: true, cost: "50 ghz"});
+     this.collections.actions.create({content: "Check facebook", order:this.collections.actions.nextOrder(), enabled: true, cost: "2 hours of productivity"});
     this.collections.locations.create({id: 1, content: "Localhost", order: this.collections.locations.nextOrder(), enabled: true});
   };
 

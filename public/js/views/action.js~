@@ -2,8 +2,9 @@ define([
   'jquery', 
   'underscore', 
   'backbone',
+  'cprogress',
   'text!templates/action.html'
-  ], function($, _, Backbone, ActionTemplate){
+  ], function($, _, Backbone, cprogress, ActionTemplate){
   var ActionView = Backbone.View.extend({
 
     //... is a list tag.
@@ -46,8 +47,24 @@ define([
 
     // Switch this view into `"performing"` mode, display grey progress bar
     perform: function() {
-      this.$el.addClass('performing')
-      var temp = this.$el
+      var obj = this.$el;
+      var content = this.$el.find('.action-content').first();
+      alert(this.model.timeOutDuration());
+      content.cprogress({
+	       percent: 0, // starting position
+         img1: 'css/v1.png', //background
+         img2: 'css/v2.png', //foreground
+	       speed: this.model.timeOutDuration(), // speed (timeout)
+	       PIStep : 0.05, // every step foreground area is bigger about this val
+	       limit: 100, // end value
+	       loop : false, //if true, no matter if limit is set, progressbar will be running
+	       showPercent : true, //show hide percent
+	       onInit: function(){},
+	       onProgress: function(){}, //p=current percent
+	       onComplete: function(){obj.find('.jCprogress').remove();}
+    });
+      content.addClass('performing');
+      var temp = content;
       this.close(temp);
     },
 
@@ -67,12 +84,12 @@ define([
     },
 
     showActionHelper: function(){
-      var helper = this.$el.children('.action-helper').first(),
+      var helper = this.$el.find('.action-helper-right').first(),
         show;
       helper.fadeIn();
     },
     hideActionHelper: function(){
-      var helper = this.$('.action-helper'),
+      var helper = this.$el.find('.action-helper-right').first(),
         show;
       helper.fadeOut();
     },
