@@ -49,12 +49,11 @@ define([
     perform: function() {
       var obj = this.$el;
       var content = this.$el.find('.action-content').first();
-      alert(this.model.timeOutDuration());
       content.cprogress({
 	       percent: 0, // starting position
          img1: 'css/v1.png', //background
          img2: 'css/v2.png', //foreground
-	       speed: this.model.timeOutDuration(), // speed (timeout)
+	       speed: this.model.get('timeOutDuration'), // speed (timeout)
 	       PIStep : 0.05, // every step foreground area is bigger about this val
 	       limit: 100, // end value
 	       loop : false, //if true, no matter if limit is set, progressbar will be running

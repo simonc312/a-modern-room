@@ -1,0 +1,7 @@
+<div class="resource <%= enabled ? 'enabled' : '' %>">
+  <div class="display">
+    <span class="resource-helper-bottom"><%= ResourceDescription %></span>
+    <div class="resource-content"><%- content %>  <%- amount%></div>
+    <span class="resource-destroy"></span>
+  </div>
+</div>

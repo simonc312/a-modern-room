@@ -5,7 +5,10 @@
     %h1
       A Modern Room
       %div.content
-        %ul#top-nav
+        %div.locations
+          %ul#top-nav
+        %div.resources
+          %ul#right-nav
         %div#create-todo
           %input#new-todo{"placeholder" => "What's your name?", "type" => "text"}/
           %span.ui-tooltip-top{"style" => "display:none;"} Press Enter to continue

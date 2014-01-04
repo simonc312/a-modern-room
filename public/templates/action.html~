@@ -1,7 +1,7 @@
 <div class="action <%= enabled ? 'enabled' : '' %>">
   <div class="display">
     <span class="action-helper-right">Cost: <%= cost %></span>
-    <div class="action-content"><%- content %></div>
+    <div class="action-content" data-action-id="<%= id %>" data-action-timeOutDuration="<%= timeOutDuration %>"><%- content %></div>
     <span class="action-destroy"></span>
   </div>
 </div>

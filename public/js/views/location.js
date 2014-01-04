@@ -30,7 +30,8 @@ define([
 
     open: function() {
       var self = this;
-       alert("Open location");
+        //this is not returning the actual content of model instance
+       alert(this.model.content);
       return false;
     }
   });

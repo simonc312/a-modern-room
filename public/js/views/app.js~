@@ -4,10 +4,12 @@ define([
   'backbone',
   'js/views/todo',
   'js/views/action',
+  'js/views/resource',
   'js/views/locationList',
   'js/collections/actions',
+  'js/collections/resources',
   'text!templates/stats.html'
-  ], function($, _, Backbone, TodoView, ActionView, LocationListView, ActionsCollection, statsTemplate){
+  ], function($, _, Backbone, TodoView, ActionView, ResourceView, LocationListView, ActionsCollection, ResourceCollection, statsTemplate){
   var AppView = Backbone.View.extend({
 
     // Instead of generating a new element, bind to the existing skeleton of
@@ -24,8 +26,6 @@ define([
     // Delegated events for creating new items, and clearing completed ones.
     events: {
       "keypress #new-todo":  "createOnEnter",
-      "hover .action-content": "showActionHelper",
-      "mouseout .action-content": "hideActionHelper",
       "click .todo-clear a": "clearCompleted"
     },
 
@@ -38,6 +38,7 @@ define([
 
       this.listenTo(this.collection, 'add', this.addOne);
       this.listenTo(ActionsCollection, 'add', this.addOneAction);
+      this.listenTo(ResourceCollection, 'add', this.addOneResource);
       this.listenTo(this.collection, 'reset', this.addAll);
       this.listenTo(this.collection, 'all', this.render);
 
@@ -65,7 +66,10 @@ define([
       var view = new ActionView({model: action});
       this.$('#action-list').append(view.render().el);
     },
-
+    addOneResource: function(resource) {
+      var view = new ResourceView({model: resource});
+      this.$('ul#right-nav').append(view.render().el);
+    },
     // Add all items in the **Todos** collection at once.
     addAll: function() {
       this.collection.each(this.addOne);
@@ -92,17 +96,6 @@ define([
     clearCompleted: function() {
       _.each(this.collection.done(), function(todo){ todo.clear(); });
       return false;
-    },
-
-    showActionHelper: function(){
-      var helper = this.$('.action-helper'),
-        show;
-      helper.fadeIn();
-    },
-    hideActionHelper: function(){
-      var helper = this.$('.action-helper'),
-        show;
-      helper.fadeOut();
     }
 
   });
