@@ -59,18 +59,17 @@ define([
 	       limit: 100, // end value
 	       loop : false, //if true, no matter if limit is set, progressbar will be running
 	       showPercent : true, //show hide percent
-	       onInit: function(){},
+	       onInit: function(){content.addClass('performing');},
 	       onProgress: function(){}, //p=current percent
-	       onComplete: function(){obj.find('.jCprogress').remove();}
+	       onComplete: function(){obj.find('.jCProgress').remove(); content.removeClass('performing');}
     });
-      content.addClass('performing');
-      var temp = content;
-      this.close(temp);
+      //var temp = content;
+      //this.close(temp);
     },
 
     // Close the `"performing"` mode after timeOutDuration 
     close: function(el) {
-      setTimeout(function(){el.removeClass('performing');},this.model.timeOutDuration());
+      el.removeClass('performing');
       
     },
 
@@ -84,14 +83,16 @@ define([
     },
 
     showActionHelper: function(){
-      var helper = this.$el.find('.action-helper-right').first(),
-        show;
-      helper.fadeIn();
+      if(this.$el.find('.performing').first().length == 0){
+        var helper = this.$el.find('.action-helper-right').first();
+        helper.fadeIn();
+      }
     },
     hideActionHelper: function(){
-      var helper = this.$el.find('.action-helper-right').first(),
-        show;
-      helper.fadeOut();
+      if(this.$el.find('.performing').first().length == 0){
+        var helper = this.$el.find('.action-helper-right').first();
+        helper.fadeOut();
+      }
     },
 
     // Remove the item, destroy the model.

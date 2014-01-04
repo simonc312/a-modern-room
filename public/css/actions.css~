@@ -1,5 +1,6 @@
 .action-content.performing {
 cursor: progress;
+pointer-events: none;
 }
 .action-content {
 font-size: 14px;
@@ -16,7 +17,7 @@ color:#ffffff;
 	font-size:12px;
 	font-family:arial;
 	padding:.5em 1em;
-  margin-top: 22px;
+  margin-top: 20px;
 	position:absolute;
   z-index: 10;
 	text-align:center;

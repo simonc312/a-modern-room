@@ -1,5 +1,10 @@
 .action-content.performing {
 cursor: progress;
+pointer-events: none;
+}
+
+.action-content.performing.active {
+pointer-events: auto;
 }
 .action-content {
 font-size: 14px;
