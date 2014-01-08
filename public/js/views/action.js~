@@ -3,8 +3,9 @@ define([
   'underscore', 
   'backbone',
   'cprogress',
+  'js/collections/resources',
   'text!templates/action.html'
-  ], function($, _, Backbone, cprogress, ActionTemplate){
+  ], function($, _, Backbone, cprogress, ResourceCollection, ActionTemplate){
   var ActionView = Backbone.View.extend({
 
     //... is a list tag.
@@ -47,30 +48,60 @@ define([
 
     // Switch this view into `"performing"` mode, display grey progress bar
     perform: function() {
-      var obj = this.$el;
-      var content = this.$el.find('.action-content').first();
-      alert(this.model.get('timeOutDuration'));
-      content.cprogress({
-	       percent: 0, // starting position
-         img1: 'css/v1.png', //background
-         img2: 'css/v2.png', //foreground
-	       speed: this.model.timeOutDuration, // speed (timeout)
-	       PIStep : 0.05, // every step foreground area is bigger about this val
-	       limit: 100, // end value
-	       loop : false, //if true, no matter if limit is set, progressbar will be running
-	       showPercent : true, //show hide percent
-	       onInit: function(){content.addClass('performing');},
-	       onProgress: function(){}, //p=current percent
-	       onComplete: function(){obj.find('.jCProgress').remove(); content.removeClass('performing');}
-    });
-      //var temp = content;
-      //this.close(temp);
+      //perform only if the cost can be satisfied
+      // otherwise trigger event saying not enough of what resource
+      var modelsAndCosts = this.checkResources();
+      if(modelsAndCosts){
+        this.useResources(modelsAndCosts);
+        var obj = this.$el;
+        var content = this.$el.find('.action-content').first();
+        content.cprogress({
+	        percent: 0, // starting position
+          img1: 'css/v1.png', //background
+          img2: 'css/v2.png', //foreground
+	        speed: this.model.get('timeOutDuration'), // speed (timeout)
+	        PIStep : 0.05, // every step foreground area is bigger about this val
+	        limit: 100, // end value
+	        loop : false, //if true, no matter if limit is set, progressbar will be running
+	        showPercent : true, //show hide percent
+	        onInit: function(){content.addClass('performing');},
+	        onProgress: function(){}, //p=current percent
+	        onComplete: function(){obj.find('.jCProgress').remove();    content.removeClass('performing');}
+        });
+      }
     },
 
     // Close the `"performing"` mode after timeOutDuration 
     close: function(el) {
       el.removeClass('performing');
       
+    },
+
+    checkResources: function(){
+      var modelsAndCosts = {};
+      var ResourceCosts = this.model.get('cost');
+      $.each(ResourceCosts,function(resourceName, cost){
+      // match is the model instance in collection that matches resourceName to check if it is possible to subtract costs without non negative amount. Return a key value pair array of Models and cost to subtract if all matches.checkSubtract(cost) are true 
+        var match = ResourceCollection.find(function(resource){return resource.get('content') == resourceName});
+        if(match.checkSubtract(cost)){
+          modelsAndCosts[match.id] = cost;
+          }
+        else return false;
+      });
+      return modelsAndCosts;
+    },
+
+    useResources: function(modelsAndCosts){
+      $.each(modelsAndCosts,
+        function(modelId,cost){
+          var model = ResourceCollection.get(modelId);
+          model.subtract(cost);
+          alert("model subtracted cost!");        
+        });
+    },
+
+    triggerEventDescription: function (){
+
     },
 
 

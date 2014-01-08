@@ -21,6 +21,16 @@ define(['underscore', 'backbone'], function(_, Backbone) {
     // Remove this Resource from *localStorage*
     clear: function() {
       this.destroy();
+    },
+    
+    checkSubtract: function(cost){
+      if((this.get('amount') - cost) >= 0){return true;}
+      else return false; 
+    },
+
+    subtract: function(cost){
+      var curAmt = this.get('amount');
+      this.set('amount', curAmt - cost);
     }
 
   });

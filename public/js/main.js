@@ -37,9 +37,9 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/todos', 'js/co
     this.views.app = new AppView({collection: this.collections.todos});
     this.views.locationList = new LocationListView({collection: this.collections.locations});
 
-    this.collections.actions.create({id: 1, timeOutDuration: 1000, content: "Restart the computer", order:this.collections.actions.nextOrder(), enabled: true, cost: "50 ghz"});
+    this.collections.actions.create({id: 1, timeOutDuration: 1000, content: "Restart the computer", order:this.collections.actions.nextOrder(), enabled: true, cost: {"Battery Life": 2}});
 
-     this.collections.actions.create({id:2, timeOutDuration: 200, content: "Check facebook", order:this.collections.actions.nextOrder(), enabled: true, cost: "2 hours of productivity"});
+     this.collections.actions.create({id:2, timeOutDuration: 200, content: "Check facebook", order:this.collections.actions.nextOrder(), enabled: true, cost: {"Battery Life":5}});
 
     this.collections.locations.create({id: 1, content: "Localhost", order: this.collections.locations.nextOrder(), enabled: true});
 
