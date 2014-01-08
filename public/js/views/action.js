@@ -51,7 +51,7 @@ define([
       //perform only if the cost can be satisfied
       // otherwise trigger event saying not enough of what resource
       var modelsAndCosts = this.checkResources();
-      if(modelsAndCosts){
+      if(!$.isEmptyObject(modelsAndCosts)){
         this.useResources(modelsAndCosts);
         var obj = this.$el;
         var content = this.$el.find('.action-content').first();
@@ -86,7 +86,7 @@ define([
         if(match.checkSubtract(cost)){
           modelsAndCosts[match.id] = cost;
           }
-        else return false;
+        else {alert("Not enough " + match.get('content')); return false;}
       });
       return modelsAndCosts;
     },
