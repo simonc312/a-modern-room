@@ -7,13 +7,13 @@
       %div.content
         %div.locations
           %ul#top-nav
+        %div#create-todo
+          %input#new-todo{"placeholder" => "What's your name?", "type" => "text"}/
+          %span.ui-tooltip-top{"style" => "display:none;"} Press Enter to continue
         %div.resources
           %ul#right-nav
         %div.events
           %ul#left-nav
-        %div#create-todo
-          %input#new-todo{"placeholder" => "What's your name?", "type" => "text"}/
-          %span.ui-tooltip-top{"style" => "display:none;"} Press Enter to continue
         %div#todos
           %ul#todo-list
         %div#actions

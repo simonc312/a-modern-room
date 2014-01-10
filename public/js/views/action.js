@@ -84,6 +84,7 @@ define([
     checkResources: function(){
       var modelsAndCosts = {};
       var ResourceCosts = this.model.get('cost');
+      var Action = this;
       $.each(ResourceCosts,function(resourceName, cost){
       // match is the model instance in collection that matches resourceName to check if it is possible to subtract costs without non negative amount. Return a key value pair array of Models and cost to subtract if all matches.checkSubtract(cost) are true 
         var match = ResourceCollection.find(function(resource){return resource.get('content') == resourceName});
@@ -92,8 +93,8 @@ define([
           }
         else {
           //create event indicating lack of resources to perform action
-          var eventContent = "Not enough" + match.get('content');
-          this.createEvent(eventContent);
+          var eventContent = "Not enough " + match.get('content');
+          Action.createEvent(eventContent);
           return false;}
       });
       return modelsAndCosts;
