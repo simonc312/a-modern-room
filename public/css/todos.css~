@@ -59,7 +59,7 @@ body {
 
 #create-todo {
 	position: relative;
-  width: 470px;
+  width: 480px;
 }
 #create-todo input {
 	width: 466px;

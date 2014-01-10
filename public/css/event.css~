@@ -1,0 +1,13 @@
+ul#left-nav {
+float: left;
+}
+
+.event-content {
+font-size: 14px;
+cursor: normal;
+margin: 5px;
+padding: 10px;
+padding-top: 25px;
+}
+
+

@@ -5,11 +5,13 @@ define([
   'js/views/todo',
   'js/views/action',
   'js/views/resource',
+  'js/views/event',
   'js/views/locationList',
   'js/collections/actions',
   'js/collections/resources',
+  'js/collections/events',
   'text!templates/stats.html'
-  ], function($, _, Backbone, TodoView, ActionView, ResourceView, LocationListView, ActionsCollection, ResourceCollection, statsTemplate){
+  ], function($, _, Backbone, TodoView, ActionView, ResourceView, EventView, LocationListView, ActionsCollection, ResourceCollection, EventCollection, statsTemplate){
   var AppView = Backbone.View.extend({
 
     // Instead of generating a new element, bind to the existing skeleton of
@@ -39,6 +41,7 @@ define([
       this.listenTo(this.collection, 'add', this.addOne);
       this.listenTo(ActionsCollection, 'add', this.addOneAction);
       this.listenTo(ResourceCollection, 'add', this.addOneResource);
+      this.listenTo(EventCollection, 'add', this.addOneEvent);
       this.listenTo(this.collection, 'reset', this.addAll);
       this.listenTo(this.collection, 'all', this.render);
 
@@ -69,6 +72,10 @@ define([
     addOneResource: function(resource) {
       var view = new ResourceView({model: resource});
       this.$('ul#right-nav').append(view.render().el);
+    },
+    addOneEvent: function(event){
+      var view = new EventView({model: event});
+      this.$('ul#left-nav').append(view.render().el);
     },
     // Add all items in the **Todos** collection at once.
     addAll: function() {

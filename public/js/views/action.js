@@ -4,8 +4,9 @@ define([
   'backbone',
   'cprogress',
   'js/collections/resources',
+  'js/collections/events',
   'text!templates/action.html'
-  ], function($, _, Backbone, cprogress, ResourceCollection, ActionTemplate){
+  ], function($, _, Backbone, cprogress, ResourceCollection, EventCollection, ActionTemplate){
   var ActionView = Backbone.View.extend({
 
     //... is a list tag.
@@ -53,6 +54,9 @@ define([
       var modelsAndCosts = this.checkResources();
       if(!$.isEmptyObject(modelsAndCosts)){
         this.useResources(modelsAndCosts);
+        //successful event created
+        var eventContent = this.model.get('content') + " was successful.";
+        this.createEvent(eventContent);
         var obj = this.$el;
         var content = this.$el.find('.action-content').first();
         content.cprogress({
@@ -86,7 +90,11 @@ define([
         if(match.checkSubtract(cost)){
           modelsAndCosts[match.id] = cost;
           }
-        else {alert("Not enough " + match.get('content')); return false;}
+        else {
+          //create event indicating lack of resources to perform action
+          var eventContent = "Not enough" + match.get('content');
+          this.createEvent(eventContent);
+          return false;}
       });
       return modelsAndCosts;
     },
@@ -99,8 +107,8 @@ define([
         });
     },
 
-    triggerEventDescription: function (){
-
+    createEvent: function (eventContent){
+       EventCollection.create({content: eventContent, order: EventCollection.nextOrder(), enabled: true});
     },
 
 
