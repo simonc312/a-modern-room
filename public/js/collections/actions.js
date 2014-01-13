@@ -21,6 +21,23 @@ define([
       return this.without.apply(this, this.enabled());
     },
 
+    //Filter down the list to only Action items that have different location matching current location selected
+    notLocation: function(location) {
+      return this.filter(function(Action){Action.get('location') != location});
+    },
+
+    location: function(location) {
+      return this.filter(function(Action){Action.get('location') = location});
+    },
+
+    setEnabled: function(location){
+      this.each(function(Action){
+        if(Action.get("location") == location){Action.set("enabled",true);}
+        else {Action.set("enabled", false)};
+      });
+      return false;
+    },
+
     // We keep the Actions in sequential order, despite being saved by unordered
     // GUID in the database. This generates the next order number for new items.
     nextOrder: function() {

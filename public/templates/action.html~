@@ -1,7 +1,7 @@
 <div class="action <%= enabled ? 'enabled' : '' %>">
   <div class="display">
     <span class="action-helper-right">
-      <% _.each(cost, function(resource, cost){ %>
+      <% _.each(cost, function(cost, resource){ %>
         | <%- resource %> : <%- cost %>
       <% }); %>
     </span>

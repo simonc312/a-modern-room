@@ -1,6 +1,27 @@
+.action.enabled {
+visibility: visible;
+opacity: 1;
+pointer-events: auto;
+-webkit-transition: all 3s ease;
+  -moz-transition: all 3s ease;
+  -ms-transition: all 3s ease;
+  -o-transition: all 3s ease;
+  transition: all 3s ease;
+}
+
+.action.disabled{
+visibility: hidden;
+opacity: 0;
+pointer-events: none;
+}
+
 .action-content.performing {
 cursor: progress;
 pointer-events: none;
+}
+
+.action-content.performing.active {
+pointer-events: auto;
 }
 .action-content {
 font-size: 14px;

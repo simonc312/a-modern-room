@@ -6,6 +6,8 @@ define(['underscore', 'backbone'], function(_, Backbone) {
   // how long it takes before action can be performed again
 
     eventDescription: function() {return "Event Description"},
+    //associated location where action is enabled
+    location: "location",
     // Default attributes for the todo.
     defaults: {
       content: 'empty Action...',

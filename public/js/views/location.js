@@ -2,8 +2,9 @@ define([
   'jquery', 
   'underscore', 
   'backbone',
+  'js/collections/actions',
   'text!templates/location.html'
-  ], function($, _, Backbone, locationTemplate){
+  ], function($, _, Backbone, ActionCollection, locationTemplate){
   
   var LocationView = Backbone.View.extend({
     tagName: 'li',
@@ -12,7 +13,7 @@ define([
     template: _.template(locationTemplate),
 
     events: {
-      'click': 'open'
+      'click': 'updateActions'
     },
 
     initialize: function() {
@@ -28,10 +29,10 @@ define([
       return this;
     },
 
-    open: function() {
-      var self = this;
-        //this is not returning the actual content of model instance
-       alert(this.model.content);
+    updateActions: function() {
+  
+  //set enabled for each action if matching location
+      ActionCollection.setEnabled(this.model.get("content"));
       return false;
     }
   });
