@@ -3,7 +3,20 @@ float: left;
 padding-bottom: 10%;
 height: 680px;
 overflow: hidden;
--webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))"
+}
+
+body:after {
+    content:'';
+    position:fixed;
+    bottom: 0;
+    height:140px;
+    width: 100%;
+    background: linear-gradient(bottom,  rgba(255,255,255,1), rgba(255,255,255, 0)); 
+    background:-o-linear-gradient(bottom,  rgba(255,255,255,0), rgba(255,255,255, 1));
+    background:-moz-linear-gradient(bottom,  rgba(255,255,255,1), rgba(255,255,255, 0)); 
+    background:-ms-linear-gradient(bottom, white, rgba(0, 0, 0, 0)); 
+    background:-webkit-linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255, 0)); 
+    z-index: 999;
 }
 
 .event-content {
