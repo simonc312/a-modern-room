@@ -42,6 +42,7 @@ define([
       this.listenTo(ActionsCollection, 'add', this.addOneAction);
       this.listenTo(ResourceCollection, 'add', this.addOneResource);
       this.listenTo(EventCollection, 'add', this.addOneEvent);
+      this.listenTo(EventCollection, 'change', this.clearOldEvent);
       this.listenTo(this.collection, 'reset', this.addAll);
       this.listenTo(this.collection, 'all', this.render);
 
@@ -103,7 +104,15 @@ define([
     clearCompleted: function() {
       _.each(this.collection.done(), function(todo){ todo.clear(); });
       return false;
+    },
+
+    clearOldEvent: function() {
+      if(EventCollection.size() > 10)
+        EventCollection.first().clear();
+      return false;
     }
+
+
 
   });
   return AppView;

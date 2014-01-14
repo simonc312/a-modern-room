@@ -42,6 +42,7 @@ define([
       this.listenTo(ActionsCollection, 'add', this.addOneAction);
       this.listenTo(ResourceCollection, 'add', this.addOneResource);
       this.listenTo(EventCollection, 'add', this.addOneEvent);
+      this.listenTo(EventCollection, 'change', this.clearOldEvent);
       this.listenTo(this.collection, 'reset', this.addAll);
       this.listenTo(this.collection, 'all', this.render);
 
@@ -75,7 +76,7 @@ define([
     },
     addOneEvent: function(event){
       var view = new EventView({model: event});
-      this.$('ul#left-nav').append(view.render().el);
+      this.$('ul#left-nav').prepend(view.render().el);
     },
     // Add all items in the **Todos** collection at once.
     addAll: function() {
@@ -103,7 +104,15 @@ define([
     clearCompleted: function() {
       _.each(this.collection.done(), function(todo){ todo.clear(); });
       return false;
+    },
+
+    clearOldEvent: function() {
+      if(EventCollection.size() > 10)
+        EventCollection.last().clear();
+      return false;
     }
+
+
 
   });
   return AppView;

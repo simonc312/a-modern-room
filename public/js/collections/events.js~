@@ -27,9 +27,9 @@ define([
       return this.last().get('order') + 1;
     },
 
-    // Events are sorted by their original insertion order.
+    // Events are sorted by newest insertion order.
     comparator: function(Event) {
-      return -Event.get('order');
+      return Event.get('order');
     }
 
   });

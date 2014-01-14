@@ -29,7 +29,7 @@ define([
 
     // Events are sorted by newest insertion order.
     comparator: function(Event) {
-      return -Event.get('order');
+      return Event.get('order');
     }
 
   });
