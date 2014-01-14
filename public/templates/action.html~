@@ -1,5 +1,5 @@
-<div class="action <%= enabled ? 'enabled' : '' %>">
-  <div class="display">
+<div class="action">
+  <div class="display <%= enabled ? 'enabled' : 'disabled' %>">
     <span class="action-helper-right">
       <% _.each(cost, function(cost, resource){ %>
         | <%- resource %> : <%- cost %>

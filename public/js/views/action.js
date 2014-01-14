@@ -38,7 +38,10 @@ define([
     // To avoid XSS (not that it would be harmful in this particular app),
     // we use underscore's "<%-" syntax in template to set the contents of the Action item.
     render: function() {
+      var progress = this.$el.find('.jCProgress').first();
       this.$el.html(this.template(this.model.toJSON()));
+      if(progress.length)
+        this.$el.find('.action-content').first().addClass('performing').append(progress);
       this.cacheInput();
       return this;
     },
@@ -70,7 +73,7 @@ define([
 	        showPercent : true, //show hide percent
 	        onInit: function(){content.addClass('performing');},
 	        onProgress: function(){}, //p=current percent
-	        onComplete: function(){obj.find('.jCProgress').remove();    content.removeClass('performing');}
+	        onComplete: function(){obj.find('.jCProgress').remove();    content.removeClass('performing');alert("Finish");}
         });
       }
     },
