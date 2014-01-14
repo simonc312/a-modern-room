@@ -21,16 +21,15 @@ define([
       return this.without.apply(this, this.enabled());
     },
 
-    // We keep the Events in sequential order, despite being saved by unordered
-    // GUID in the database. This generates the next order number for new items.
+    // We keep the Events in reverse order, despite being saved unordered
     nextOrder: function() {
       if (!this.length) return 1;
       return this.last().get('order') + 1;
     },
 
-    // Events are sorted by their original insertion order.
+    // Events are sorted by newest insertion order.
     comparator: function(Event) {
-      return Event.get('order');
+      return -Event.get('order');
     }
 
   });

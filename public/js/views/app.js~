@@ -11,7 +11,7 @@ define([
   'js/collections/resources',
   'js/collections/events',
   'text!templates/stats.html'
-  ], function($, _, Backbone, TodoView, ActionView, ResourceView, LocationListView, ActionsCollection, ResourceCollection, statsTemplate){
+  ], function($, _, Backbone, TodoView, ActionView, ResourceView, EventView, LocationListView, ActionsCollection, ResourceCollection, EventCollection, statsTemplate){
   var AppView = Backbone.View.extend({
 
     // Instead of generating a new element, bind to the existing skeleton of

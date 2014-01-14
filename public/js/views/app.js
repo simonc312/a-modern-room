@@ -75,7 +75,7 @@ define([
     },
     addOneEvent: function(event){
       var view = new EventView({model: event});
-      this.$('ul#left-nav').append(view.render().el);
+      this.$('ul#left-nav').prepend(view.render().el);
     },
     // Add all items in the **Todos** collection at once.
     addAll: function() {
