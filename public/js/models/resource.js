@@ -4,8 +4,9 @@ define(['underscore', 'backbone'], function(_, Backbone) {
     Resource: function() { },
 
   // displayed in resource helper on hover
-    ResourceDescription: function() {return "Resource Description"},
+    
     defaults: {
+      ResourceDescription: "Resource Description",
       content: 'empty Resource...',
       enabled: false,
       amount: 0 //how many resources are left
@@ -32,6 +33,12 @@ define(['underscore', 'backbone'], function(_, Backbone) {
       var curAmt = this.get('amount');
       this.set('amount', curAmt - cost);
       this.save({amount: curAmt - cost});
+    },
+  
+    add: function(amt){
+      var curAmt = this.get('amount');
+      this.set('amount', curAmt + amt);
+      this.save({amount: curAmt + amt});
     }
 
   });

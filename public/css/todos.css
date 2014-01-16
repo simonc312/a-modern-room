@@ -58,6 +58,12 @@ body {
 	line-height: 1;
 }
 
+#reset {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 #create-todo {
 	position: relative;
   width: 480px;

@@ -52,6 +52,7 @@ define([
       var modelsAndCosts = this.checkResources();
       if(!$.isEmptyObject(modelsAndCosts)){
         this.useResources(modelsAndCosts);
+        this.makeResources();
         //successful event created
         var eventContent = this.model.get('content') + " was successful.";
         this.createEvent(eventContent);
@@ -85,7 +86,7 @@ define([
       var Action = this;
       $.each(ResourceCosts,function(resourceName, cost){
       // match is the model instance in collection that matches resourceName to check if it is possible to subtract costs without non negative amount. Return a key value pair array of Models and cost to subtract if all matches.checkSubtract(cost) are true 
-        var match = ResourceCollection.find(function(resource){return resource.get('content') == resourceName});
+        var match = Action.findResource(resourceName);
         if(match.checkSubtract(cost)){
           modelsAndCosts[match.id] = cost;
           }
@@ -93,8 +94,9 @@ define([
           //create event indicating lack of resources to perform action
           var eventContent = "Not enough " + match.get('content');
           Action.createEvent(eventContent);
-          return false;}
+          actionPerformed = false;}
       });
+
       return modelsAndCosts;
     },
 
@@ -106,8 +108,37 @@ define([
         });
     },
 
+    makeResources: function(){
+      var Action = this;
+      var ResourceAmounts = this.model.get('prodResource');
+        if(ResourceAmounts != undefined){
+          $.each(ResourceAmounts, function(prodResource, amount){
+            var resource = Action.findResource(prodResource);
+             if(resource != undefined)
+                {alert("update Resource");Action.updateResource(resource, amount);}
+             else
+                {alert("Create Resource");Action.createResource(prodResource, amount);
+                var eventContent = prodResource + " was made for the first time!";
+                Action.createEvent(eventContent);                
+                }
+          });
+        }
+    },
+
     createEvent: function (eventContent){
        EventCollection.create({content: eventContent, order: EventCollection.nextOrder(), enabled: true});
+    },
+    
+    findResource: function (resourceContent){
+      return ResourceCollection.find(function(resource){return resource.get('content') == resourceContent});
+    },
+
+    createResource: function(resourceContent,resourceAmt){
+      ResourceCollection.create({content: resourceContent, order: ResourceCollection.nextOrder(), enabled: true, amount: resourceAmt})
+    },
+
+    updateResource: function(res,amt){
+      res.add(amt);      
     },
 
 

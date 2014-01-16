@@ -28,7 +28,8 @@ define([
     // Delegated events for creating new items, and clearing completed ones.
     events: {
       "keypress #new-todo":  "createOnEnter",
-      "click .todo-clear a": "clearCompleted"
+      "click .todo-clear a": "clearCompleted",
+      "click #reset": "clearCollections"
     },
 
     // At initialization we listen to the relevant events on the `Todos`
@@ -88,7 +89,7 @@ define([
 
     addAllActions: function(){ActionsCollection.each(this.addOneAction);},
 
-    addAllResources: function(){ResourceCollection.each(this.addOneResource);}
+    addAllResources: function(){ResourceCollection.each(this.addOneResource);},
 
     // Generate the attributes for a new Todo item.
     newAttributes: function() {
@@ -117,6 +118,17 @@ define([
       if(EventCollection.size() > 10)
         EventCollection.first().clear();
       return false;
+    },
+
+    clearModel: function(model){
+      model.clear();
+    },
+
+    clearCollections: function(){
+      ActionsCollection.each(this.clearModel);
+      ResourceCollection.each(this.clearModel);
+      EventCollection.each(this.clearModel);
+      location.reload();
     }
 
 

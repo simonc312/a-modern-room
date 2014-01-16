@@ -28,7 +28,8 @@ define([
     // Delegated events for creating new items, and clearing completed ones.
     events: {
       "keypress #new-todo":  "createOnEnter",
-      "click .todo-clear a": "clearCompleted"
+      "click .todo-clear a": "clearCompleted",
+      "click #reset": "clearCollections"
     },
 
     // At initialization we listen to the relevant events on the `Todos`
@@ -117,6 +118,17 @@ define([
       if(EventCollection.size() > 10)
         EventCollection.first().clear();
       return false;
+    },
+
+    clearModel: function(model){
+      model.clear();
+    },
+
+    clearCollections: function(){
+      ActionsCollection.each(this.clearModel);
+      ResourceCollection.each(this.clearModel);
+      EventCollection.each(this.clearModel);
+      
     }
 
 

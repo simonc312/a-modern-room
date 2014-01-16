@@ -39,7 +39,7 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/todos', 'js/co
     if(this.collections.actions.length == 0){
     this.collections.actions.create({id: 1, timeOutDuration: 1000, content: "Restart the computer", order:this.collections.actions.nextOrder(), enabled: true, cost: {"Battery Life": 2}, location: "Localhost"});
 
-     this.collections.actions.create({id:2, timeOutDuration: 200, content: "Check facebook", order:this.collections.actions.nextOrder(), enabled: false, cost: {"Battery Life":5, "Patience":2}, location: "Wifi"});
+     this.collections.actions.create({id:2, timeOutDuration: 200, content: "Check facebook", order:this.collections.actions.nextOrder(), enabled: false, cost: {"Battery Life":5, "Patience":2}, location: "Wifi", prodResource: {"Friends":1.5}});
     }
     if(this.collections.locations.length == 0){
     this.collections.locations.create({id: 1, content: "Localhost", order: this.collections.locations.nextOrder(), enabled: true});
@@ -56,7 +56,6 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/todos', 'js/co
     collections: {},
     start: function(){
       var self = this;
-      self.views.locationList.render();
       Backbone.history.start();
     }
     
