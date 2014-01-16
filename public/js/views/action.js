@@ -115,9 +115,9 @@ define([
           $.each(ResourceAmounts, function(prodResource, amount){
             var resource = Action.findResource(prodResource);
              if(resource != undefined)
-                {alert("update Resource");Action.updateResource(resource, amount);}
+                {Action.updateResource(resource, amount);}
              else
-                {alert("Create Resource");Action.createResource(prodResource, amount);
+                {Action.createResource(prodResource, amount);
                 var eventContent = prodResource + " was made for the first time!";
                 Action.createEvent(eventContent);                
                 }

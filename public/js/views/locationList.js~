@@ -5,22 +5,32 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
     tagName: 'ul',
 
     events: {
-      "click #reset" : "resetCollection"
+      "click #reset" : "clearCollection"
     },
 
     initialize: function() {
-      this.listenTo(this.collection, 'add', this.render);
+      this.listenTo(this.collection, 'add', this.addOneLocation);
       this.listenTo(this.collection, 'reset', this.render);
       //this.collection.fetch();
     },
 
+    clearModel: function(model){
+      model.clear();
+    },
+
+    clearCollection: function(){
+      this.collection.each(this.clearModel);
+    },
+
+    addOneLocation: function() {
+      $(this.el).append(    
+    },
     render: function() {
       var $el = $(this.el)
       , self = this;
       this.collection.each(function(location) {
-      var item, sidebarItem;
-      item = new LocationView({ model: location });
-      $el.append(item.render().el);
+      var NewLocation = new LocationView({ model: location });
+      $el.append(NewLocation.render().el);
   });
 
   return this;

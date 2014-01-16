@@ -61,7 +61,7 @@ body {
 #reset {
   float: right;
   font-size: 20px;
-  cursor-style: click;
+  cursor: pointer;
 }
 
 #create-todo {
