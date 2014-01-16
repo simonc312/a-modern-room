@@ -31,6 +31,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
     subtract: function(cost){
       var curAmt = this.get('amount');
       this.set('amount', curAmt - cost);
+      this.save({amount: curAmt - cost});
     }
 
   });

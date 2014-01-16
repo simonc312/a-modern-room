@@ -9,7 +9,7 @@ define([
     model: Action,
 
     // Save all of the Action items under the `"Actions"` namespace.
-    localStorage: new Store('Actions'),
+    localStorage: new Store('actions'),
 
     // Filter down the list of all Action items that are not unlocked.
     disabled: function() {

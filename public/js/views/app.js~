@@ -44,9 +44,12 @@ define([
       this.listenTo(EventCollection, 'add', this.addOneEvent);
       this.listenTo(EventCollection, 'change', this.clearOldEvent);
       this.listenTo(this.collection, 'reset', this.addAll);
-      this.listenTo(this.collection, 'all', this.render);
+      this.listenTo(ActionsCollection, 'reset', this.addAllActions);
+      this.listenTo(ResourceCollection, 'reset', this.addAllResources);
 
       this.collection.fetch();
+      ActionsCollection.fetch();
+      ResourceCollection.fetch();
     },
 
     // Re-rendering the App just means refreshing the statistics -- the rest
@@ -80,8 +83,12 @@ define([
     },
     // Add all items in the **Todos** collection at once.
     addAll: function() {
-      this.collection.each(this.addOne);
+       this.collection.each(this.addOne);
     },
+
+    addAllActions: function(){ActionsCollection.each(this.addOneAction);},
+
+    addAllResources: function(){ResourceCollection.each(this.addOneResource);}
 
     // Generate the attributes for a new Todo item.
     newAttributes: function() {
@@ -108,7 +115,7 @@ define([
 
     clearOldEvent: function() {
       if(EventCollection.size() > 10)
-        EventCollection.last().clear();
+        EventCollection.first().clear();
       return false;
     }
 

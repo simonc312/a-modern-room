@@ -33,7 +33,7 @@ define([
     setEnabled: function(location){
       this.each(function(Action){
         if(Action.get("location") == location){Action.set("enabled",true);}
-        else Action.set("enabled", false);
+        else {Action.set("enabled", false)};
       });
       return false;
     },

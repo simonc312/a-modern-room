@@ -42,12 +42,7 @@ define([
       this.$el.html(this.template(this.model.toJSON()));
       if(progress.length)
         this.$el.find('.action-content').first().addClass('performing').append(progress);
-      this.cacheInput();
       return this;
-    },
-
-    cacheInput: function() {
-      this.$input = this.$('.action-input');
     },
 
     // Switch this view into `"performing"` mode, display grey progress bar
@@ -73,7 +68,7 @@ define([
 	        showPercent : true, //show hide percent
 	        onInit: function(){content.addClass('performing');},
 	        onProgress: function(){}, //p=current percent
-	        onComplete: function(){obj.find('.jCProgress').remove();    content.removeClass('performing');alert("Finish");}
+	        onComplete: function(){obj.find('.jCProgress').remove();    content.removeClass('performing');}
         });
       }
     },

@@ -1,7 +1,7 @@
 //LocationListView takes in collection of locations
 define(['jquery','underscore','backbone','js/views/location'], function($,_,Backbone,LocationView) {
   var LocationListView = Backbone.View.extend({ 
-    el: '.top-nav',
+    el: '#top-nav',
     tagName: 'ul',
 
     events: {
@@ -9,6 +9,8 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
 
     initialize: function() {
       this.listenTo(this.collection, 'add', this.render);
+      //this.listenTo(this.collection, 'reset', this.render);
+      this.collection.fetch();
     },
 
     render: function() {
@@ -21,7 +23,8 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
   });
 
   return this;
-    }
+    },
+
   });
 
   return LocationListView;
