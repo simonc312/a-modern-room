@@ -10,6 +10,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
     defaults: {
       content: 'empty Action...',
       enabled: false,
+      staticCost: true, //cost doesn't increase 
       timeOutDuration: function(){return 100},  // how long it takes before action can be performed again
       cost: {"Battery Life":0} // some actions will cost more with usage or availablility of resources cost needs to be array of resourceTypes and costs
     },

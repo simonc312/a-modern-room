@@ -28,7 +28,6 @@ define([
     // Delegated events for creating new items, and clearing completed ones.
     events: {
       "keypress #new-todo":  "createOnEnter",
-      "click .todo-clear a": "clearCompleted",
       "click #reset": "clearCollections"
     },
 
@@ -57,11 +56,11 @@ define([
     // of the app doesn't change.
     render: function() {
       var done = this.collection.done().length;
-      this.$('#todo-stats').html(this.statsTemplate({
-        total:      this.collection.length,
-        done:       this.collection.done().length,
-        remaining:  this.collection.remaining().length,
-      }));
+     // this.$('#todo-stats').html(this.statsTemplate({
+     //   total:      this.collection.length,
+     //   done:       this.collection.done().length,
+     //   remaining:  this.collection.remaining().length,
+     // }));
     },
 
     // Add a single todo item to the list by creating a view for it, and
@@ -108,11 +107,6 @@ define([
       this.input.val('');
     },
 
-    // Clear all done todo items, destroying their models.
-    clearCompleted: function() {
-      _.each(this.collection.done(), function(todo){ todo.clear(); });
-      return false;
-    },
 
     clearOldEvent: function() {
       if(EventCollection.size() > 10)
@@ -125,9 +119,9 @@ define([
     },
 
     clearCollections: function(){
-      ActionsCollection.each(this.clearModel);
-      ResourceCollection.each(this.clearModel);
-      EventCollection.each(this.clearModel);
+      _.each(ActionsCollection,this.clearModel);
+      _.each(ResourceCollection,this.clearModel);
+      _.each(EventCollection,this.clearModel);
       
     }
 

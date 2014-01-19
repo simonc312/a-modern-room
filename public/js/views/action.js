@@ -71,7 +71,7 @@ define([
 	        showPercent : true, //show hide percent
 	        onInit: function(){content.addClass('performing');},
 	        onProgress: function(){}, //p=current percent
-	        onComplete: function(){obj.find('.jCProgress').remove();    content.removeClass('performing');}
+	        onComplete: function(){obj.find('.jCProgress').remove();    obj.find('.action-content').removeClass('performing');}
         });
       }
     },
@@ -149,9 +149,11 @@ define([
     },
 
     updateCosts: function(ResourcesAmtArray){
-      var TotalAmt = 0;
-      $.each(ResourcesAmtArray, function(resource,amt){TotalAmt += amt});
-      this.model.changeCost(TotalAmt);
+      if(!this.model.get('staticCost')){
+        var TotalAmt = 0;
+        $.each(ResourcesAmtArray, function(resource,amt){TotalAmt += amt});
+        this.model.changeCost(TotalAmt);
+      }
     },
 
 

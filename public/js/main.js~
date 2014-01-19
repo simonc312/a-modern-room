@@ -56,7 +56,6 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/todos', 'js/co
     collections: {},
     start: function(){
       var self = this;
-      self.views.locationList.render();
       Backbone.history.start();
     }
     
