@@ -51,8 +51,10 @@ define([
       // otherwise trigger event saying not enough of what resource
       var modelsAndCosts = this.checkResources();
       if(!$.isEmptyObject(modelsAndCosts)){
+        var prodResources = this.model.get('prodResource');
         this.useResources(modelsAndCosts);
-        this.makeResources();
+        var ResourceAmtArray = this.makeResources(prodResources);
+        this.updateCosts(ResourceAmtArray);
         //successful event created
         var eventContent = this.model.get('content') + " was successful.";
         this.createEvent(eventContent);
@@ -108,21 +110,26 @@ define([
         });
     },
 
-    makeResources: function(){
+    makeResources: function(ResourceAmounts){
       var Action = this;
-      var ResourceAmounts = this.model.get('prodResource');
+      var ResourceArray = {};
         if(ResourceAmounts != undefined){
           $.each(ResourceAmounts, function(prodResource, amount){
             var resource = Action.findResource(prodResource);
              if(resource != undefined)
-                {alert("update Resource");Action.updateResource(resource, amount);}
+                {Action.updateResource(resource, amount);
+                ResourceArray[resource]=resource.get('amount');}
              else
-                {alert("Create Resource");Action.createResource(prodResource, amount);
+                {Action.createResource(prodResource, amount);
                 var eventContent = prodResource + " was made for the first time!";
-                Action.createEvent(eventContent);                
+                Action.createEvent(eventContent);
+                var resource = Action.findResource(prodResource);
+                ResourceArray[resource]=resource.get('amount');                
                 }
           });
         }
+
+    return ResourceArray;
     },
 
     createEvent: function (eventContent){
@@ -139,6 +146,12 @@ define([
 
     updateResource: function(res,amt){
       res.add(amt);      
+    },
+
+    updateCosts: function(ResourcesAmtArray){
+      var TotalAmt = 0;
+      $.each(ResourcesAmtArray, function(resource,amt){TotalAmt += amt});
+      this.model.changeCost(TotalAmt);
     },
 
 
