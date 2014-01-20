@@ -119,9 +119,9 @@ define([
     },
 
     clearCollections: function(){
-      _.each(ActionsCollection,this.clearModel);
-      _.each(ResourceCollection,this.clearModel);
-      _.each(EventCollection,this.clearModel);
+      ActionsCollection.each(this.clearModel);
+      ResourceCollection.each(this.clearModel);
+      EventCollection.each(this.clearModel);
       
     }
 

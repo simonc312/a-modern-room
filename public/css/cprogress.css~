@@ -3,6 +3,7 @@
      z-index: 9999999;
      margin-top:-45px; /* offset from the center */
      margin-left: 300px;
+     cursor: progress;
 }
 
 .jCProgress > div.percent {

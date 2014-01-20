@@ -2,7 +2,7 @@
      position: absolute;
      z-index: 9999999;
      margin-top:-45px; /* offset from the center */
-     margin-left: 300px;
+     margin-left: 280px;
      cursor: progress;
 }
 

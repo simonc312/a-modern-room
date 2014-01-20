@@ -71,7 +71,7 @@ define([
 	        showPercent : true, //show hide percent
 	        onInit: function(){content.addClass('performing');},
 	        onProgress: function(){}, //p=current percent
-	        onComplete: function(){obj.find('.jCProgress').remove();    content.removeClass('performing');}
+	        onComplete: function(){obj.find('.jCProgress').remove();    obj.find('.action-content').removeClass('performing');}
         });
       }
     },
@@ -86,6 +86,7 @@ define([
       var modelsAndCosts = {};
       var ResourceCosts = this.model.get('cost');
       var Action = this;
+      var actionPerformed = true;
       $.each(ResourceCosts,function(resourceName, cost){
       // match is the model instance in collection that matches resourceName to check if it is possible to subtract costs without non negative amount. Return a key value pair array of Models and cost to subtract if all matches.checkSubtract(cost) are true 
         var match = Action.findResource(resourceName);

@@ -56,11 +56,11 @@ define([
     // of the app doesn't change.
     render: function() {
       var done = this.collection.done().length;
-      this.$('#todo-stats').html(this.statsTemplate({
-        total:      this.collection.length,
-        done:       this.collection.done().length,
-        remaining:  this.collection.remaining().length,
-      }));
+     // this.$('#todo-stats').html(this.statsTemplate({
+     //   total:      this.collection.length,
+     //   done:       this.collection.done().length,
+     //   remaining:  this.collection.remaining().length,
+     // }));
     },
 
     // Add a single todo item to the list by creating a view for it, and
