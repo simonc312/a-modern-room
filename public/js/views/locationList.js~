@@ -10,6 +10,7 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
 
     initialize: function() {
       this.listenTo(this.collection, 'add', this.addOneLocation);
+      this.listenTo(this.collection, 'add', this.addOneActionList);
       this.listenTo(this.collection, 'reset', this.render);
       //this.collection.fetch();
     },
@@ -22,15 +23,20 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
       this.collection.each(this.clearModel);
     },
 
-    addOneLocation: function() {
-      $(this.el).append(    
+    addOneLocation: function(location) {
+      var NewLocation = new LocationView({ model: location });
+      $(this.el).append(NewLocation.render().el);    
+    },
+
+    addOneActionList: function(location){
+      $('#action-list').append($('<div class=' + location.get('content') + '></div>'));    
     },
     render: function() {
       var $el = $(this.el)
       , self = this;
       this.collection.each(function(location) {
-      var NewLocation = new LocationView({ model: location });
-      $el.append(NewLocation.render().el);
+        self.addOneLocation(location);
+        self.addOneActionList(location);
   });
 
   return this;

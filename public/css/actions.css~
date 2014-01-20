@@ -1,3 +1,20 @@
+div#actions {
+width: 280px;
+overflow:hidden;
+border: solid black;
+}
+
+ul#action-list{
+width: 480px;
+overflow:hidden;
+}
+
+ul#action-list > div {
+float: left;
+margin-right:100px;
+display: inline-block; *display: inline; vertical-align: top;
+}
+
 @keyframes translateAction {
   from {
     opacity: 1;
@@ -38,16 +55,16 @@ transform: translate(150px,0);
 
 .action.enabled {
 pointer-events: auto;
--moz-animation: translateAction 25s ease-in-out reverse;
--webkit-animation: translateAction 25s ease-in-out reverse;
-animation: translateAction 25s ease-in-out reverse;
+-moz-animation: translateAction 2s ease-in-out reverse;
+-webkit-animation: translateAction 2s ease-in-out reverse;
+animation: translateAction 2s ease-in-out reverse;
 }
 
 .action.disabled{
 pointer-events: none;
--moz-animation: translateAction 25s ease-in-out;
--webkit-animation: translateAction 25s ease-in-out;
-animation: translateAction 25s ease-in-out;
+-moz-animation: translateAction 2s ease-in-out;
+-webkit-animation: translateAction 2s ease-in-out;
+animation: translateAction 2s ease-in-out;
 }
 
 .action.disabled > div{

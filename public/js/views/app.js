@@ -71,7 +71,8 @@ define([
     },
     addOneAction: function(action) {
       var view = new ActionView({model: action});
-      this.$('#action-list').append(view.render().el);
+      var actionDivClass = action.get('location');
+      $.elementReady(actionDivClass,function(){$('#'+actionDivClass).append(view.render().el);});
     },
     addOneResource: function(resource) {
       var view = new ResourceView({model: resource});

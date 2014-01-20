@@ -100,7 +100,9 @@ define([
           actionPerformed = false;}
       });
 
-      return modelsAndCosts;
+      if(actionPerformed)
+        return modelsAndCosts;
+      else return {};
     },
 
     useResources: function(modelsAndCosts){

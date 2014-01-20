@@ -1,3 +1,20 @@
+div#actions {
+width: 280px;
+overflow:hidden;
+border: solid black;
+}
+
+ul#action-list{
+width: 880px;
+overflow:hidden;
+}
+
+ul#action-list > div {
+float: left;
+margin-right:120px;
+display: inline-block; *display: inline; vertical-align: top;
+}
+
 @keyframes translateAction {
   from {
     opacity: 1;
