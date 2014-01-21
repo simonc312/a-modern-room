@@ -41,8 +41,12 @@ define([
     render: function() {
       var progress = this.$el.find('.jCProgress').first();
       this.$el.html(this.template(this.model.toJSON()));
-      if(progress.length)
+      var isEnabled = this.$el.find('.enabled').first().length > 0;
+      if(progress.length){
+        if(!isEnabled){progress.hide();}
+        else{progress.show();}
         this.$el.find('.action-content').first().addClass('performing').append(progress);
+      }
       return this;
     },
 

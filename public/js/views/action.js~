@@ -40,9 +40,13 @@ define([
     // we use underscore's "<%-" syntax in template to set the contents of the Action item.
     render: function() {
       var progress = this.$el.find('.jCProgress').first();
+      var isEnabled = this.$el.find('.enabled').first().length > 0;
       this.$el.html(this.template(this.model.toJSON()));
-      if(progress.length)
+      if(progress.length){
+        if(!isEnabled){progress.hide();}
+        else{progress.show();}
         this.$el.find('.action-content').first().addClass('performing').append(progress);
+      }
       return this;
     },
 
@@ -171,12 +175,12 @@ define([
 
     showActionHelper: function(){
       if(this.$el.find('.performing').first().length == 0){
-        var helper = this.$el.find('.action-helper-right').first();
+        var helper = this.$el.find('.action-helper-top').first();
         helper.fadeIn();
       }
     },
     hideActionHelper: function(){
-        var helper = this.$el.find('.action-helper-right').first();
+        var helper = this.$el.find('.action-helper-top').first();
         helper.fadeOut();
     },
 
