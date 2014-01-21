@@ -171,12 +171,12 @@ define([
 
     showActionHelper: function(){
       if(this.$el.find('.performing').first().length == 0){
-        var helper = this.$el.find('.action-helper-right').first();
+        var helper = this.$el.find('.action-helper-top').first();
         helper.fadeIn();
       }
     },
     hideActionHelper: function(){
-        var helper = this.$el.find('.action-helper-right').first();
+        var helper = this.$el.find('.action-helper-top').first();
         helper.fadeOut();
     },
 

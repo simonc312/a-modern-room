@@ -3,10 +3,11 @@ define([
   'underscore', 
   'backbone',
   'cprogress',
+  'elementready',
   'js/collections/resources',
   'js/collections/events',
   'text!templates/action.html'
-  ], function($, _, Backbone, cprogress, ResourceCollection, EventCollection, ActionTemplate){
+  ], function($, _, Backbone, cprogress, elementReady, ResourceCollection, EventCollection, ActionTemplate){
   var ActionView = Backbone.View.extend({
 
     //... is a list tag.

@@ -67,8 +67,6 @@ pointer-events: none;
 animation: translateAction 2s ease-in-out;
 }
 
-.action.disabled > div{
-}
 
 .action-content.performing {
 cursor: progress;
@@ -86,14 +84,14 @@ padding: 10px;
 padding-top: 25px;
 }
 
-.action-helper, .action-helper-right{
+.action-helper, .action-helper-top{
 color:#ffffff;
 	cursor:normal;
 	display:none;
 	font-size:12px;
 	font-family:arial;
 	padding:.5em 1em;
-  margin-top: 20px;
+  margin-top: 60px;
 	position:absolute;
   z-index: 10;
 	text-align:center;

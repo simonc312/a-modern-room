@@ -1,7 +1,6 @@
 div#actions {
 width: 280px;
 overflow:hidden;
-border: solid black;
 }
 
 ul#action-list{
@@ -68,8 +67,6 @@ pointer-events: none;
 animation: translateAction 2s ease-in-out;
 }
 
-.action.disabled > div{
-}
 
 .action-content.performing {
 cursor: progress;
@@ -94,7 +91,7 @@ color:#ffffff;
 	font-size:12px;
 	font-family:arial;
 	padding:.5em 1em;
-  margin-top: 20px;
+  margin-top: 60px;
 	position:absolute;
   z-index: 10;
 	text-align:center;
