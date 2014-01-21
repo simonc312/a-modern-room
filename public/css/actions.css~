@@ -5,13 +5,14 @@ border: solid black;
 }
 
 ul#action-list{
-width: 480px;
+width: 880px;
 overflow:hidden;
 }
 
 ul#action-list > div {
+overflow: hidden;
 float: left;
-margin-right:100px;
+margin-right:120px;
 display: inline-block; *display: inline; vertical-align: top;
 }
 

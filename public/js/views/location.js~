@@ -13,7 +13,7 @@ define([
     template: _.template(locationTemplate),
 
     events: {
-      'click': 'updateActions'
+      'click': 'updateAndMoveActions'
     },
 
     initialize: function() {
@@ -29,8 +29,13 @@ define([
       return this;
     },
 
+    moveActions: function(){
+        $('ul#action-list > div').not('#'+this.model.get('content')).animate({'width':'0px','margin-right':'0px'});
+$('#'+this.model.get('content')).animate({'width':'30%','margin-right':'120px'});
+    },
+
     updateActions: function() {
-      alert("clicked");
+  
   //set enabled for each action if matching location
       ActionCollection.setEnabled(this.model.get("content"));
       return false;
