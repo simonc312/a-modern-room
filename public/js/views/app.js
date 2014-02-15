@@ -10,8 +10,9 @@ define([
   'js/collections/actions',
   'js/collections/resources',
   'js/collections/events',
+  'js/collections/locations',
   'text!templates/stats.html'
-  ], function($, _, Backbone, TodoView, ActionView, ResourceView, EventView, LocationListView, ActionsCollection, ResourceCollection, EventCollection, statsTemplate){
+  ], function($, _, Backbone, TodoView, ActionView, ResourceView, EventView, LocationListView, ActionsCollection, ResourceCollection, EventCollection, LocationCollection, statsTemplate){
   var AppView = Backbone.View.extend({
 
     // Instead of generating a new element, bind to the existing skeleton of
@@ -115,14 +116,19 @@ define([
       return false;
     },
 
-    clearModel: function(model){
-      model.clear();
+    clearCollection: function(collection){
+    var model;
+    while (model = collection.first()) {
+      model.destroy();
+    }
+ 
     },
 
     clearCollections: function(){
-      ActionsCollection.each(this.clearModel);
-      ResourceCollection.each(this.clearModel);
-      EventCollection.each(this.clearModel);
+      this.clearCollection(ActionsCollection);
+      this.clearCollection(ResourceCollection);
+      this.clearCollection(EventCollection);
+      this.clearCollection(LocationCollection);
       
     }
 

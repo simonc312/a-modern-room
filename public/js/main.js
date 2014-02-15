@@ -48,6 +48,10 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/todos', 'js/co
     this.collections.actions.create({id: 1, timeOutDuration: 1000, content: "Charge computer", order:this.collections.actions.nextOrder(), enabled: true, cost: {"Patience": 2}, location: "Localhost", prodResource: {"Battery Life": 5}});
 
      this.collections.actions.create({id:2, timeOutDuration: 200, content: "Check facebook", order:this.collections.actions.nextOrder(), enabled: false, cost: {"Battery Life":5, "Patience":2}, location: "Wifi", prodResource: {"Friends":1.5}});
+
+     this.collections.actions.create({id: 3, timeOutDuration: 100, content: "Watch Videos", order:this.collections.actions.nextOrder(), enabled: true, cost: {"Battery Life":2,"Patience": 2}, location: "Wifi", prodResource: {"Left Arm Strength": 2}});
+
+     this.collections.actions.create({id: 4, timeOutDuration: 100, content: "Play Minesweeper", order:this.collections.actions.nextOrder(), enabled: true, cost: {"Battery Life": 1}, location: "Localhost", prodResource: {"Patience": 5}});
     }
     
     if(this.collections.resources.length == 0){

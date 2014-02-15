@@ -15,12 +15,12 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
       //this.collection.fetch();
     },
 
-    clearModel: function(model){
-      model.clear();
-    },
-
     clearCollection: function(){
-      this.collection.each(this.clearModel);
+       var model;
+       while (model = this.collection.first()) {
+          model.destroy();
+       }
+    alert("Here");
     },
 
     addOneLocation: function(location) {
@@ -37,7 +37,7 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
       this.collection.each(function(location) {
         self.addOneLocation(location);
         self.addOneActionList(location);
-  });
+      });
 
   return this;
     },

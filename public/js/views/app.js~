@@ -72,7 +72,7 @@ define([
     addOneAction: function(action) {
       var view = new ActionView({model: action});
       var actionDivClass = action.get('location');
-      $.elementReady(actionDivClass,function(){this.append(view.render().el);});
+      $.elementReady(actionDivClass,function(){$('#'+actionDivClass).append(view.render().el);});
     },
     addOneResource: function(resource) {
       var view = new ResourceView({model: resource});
@@ -115,14 +115,18 @@ define([
       return false;
     },
 
-    clearModel: function(model){
-      model.clear();
+    clearCollection: function(collection){
+    var model;
+    while (model = collection.first()) {
+      model.destroy();
+    }
+ 
     },
 
     clearCollections: function(){
-      ActionsCollection.each(this.clearModel);
-      ResourceCollection.each(this.clearModel);
-      EventCollection.each(this.clearModel);
+      this.clearCollection(ActionsCollection);
+      this.clearCollection(ResourceCollection);
+      this.clearCollection(EventCollection);
       
     }
 
