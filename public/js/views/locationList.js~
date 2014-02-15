@@ -37,7 +37,7 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
       this.collection.each(function(location) {
         self.addOneLocation(location);
         self.addOneActionList(location);
-  });
+      });
 
   return this;
     },

@@ -5,7 +5,7 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
     tagName: 'ul',
 
     events: {
-      "click #reset" : "clearCollection"
+      
     },
 
     initialize: function() {
@@ -15,13 +15,7 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
       //this.collection.fetch();
     },
 
-    clearCollection: function(){
-       var model;
-       while (model = this.collection.first()) {
-          model.destroy();
-       }
-    alert("Here");
-    },
+
 
     addOneLocation: function(location) {
       var NewLocation = new LocationView({ model: location });

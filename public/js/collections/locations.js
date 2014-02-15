@@ -32,6 +32,14 @@ define([
     // Locations are sorted by their original insertion order.
     comparator: function(Location) {
       return Location.get('order');
+    },
+
+    reload: function(){
+       if(this.length == 0){
+        this.create({id: 1, content: "Localhost", order: this.nextOrder(), enabled: true});
+
+        this.create({id: 2, content: "Wifi", order: this.nextOrder(), enabled: true});
+}
     }
 
   });

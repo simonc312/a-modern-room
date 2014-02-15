@@ -31,6 +31,14 @@ define([
     // Resources are sorted by their original insertion order.
     comparator: function(Resource) {
       return Resource.get('order');
+    },
+
+    reload: function(){
+    if(this.length == 0){
+     this.create({content: "Battery Life", ResourceDescription: "Number of hours before laptop dies", amount: 10, order: this.nextOrder(), enabled: true});
+     this.create({content: "Patience", ResourceDescription: "Number of minutes before you destroy laptop", amount: 10, order: this.nextOrder(), enabled: true});
+    }
+
     }
 
   });

@@ -9,7 +9,7 @@ define([
     model: Event,
 
     // Save all of the Event items under the `"Events"` namespace.
-    localStorage: new Store('Events'),
+    localStorage: new Store('events'),
 
     // Filter down the list of all Event items that are not unlocked.
     disabled: function() {

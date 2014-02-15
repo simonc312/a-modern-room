@@ -48,6 +48,18 @@ define([
     // Actions are sorted by their original insertion order.
     comparator: function(Action) {
       return Action.get('order');
+    },
+
+    reload: function(){
+if(this.length == 0){
+    this.create({id: 1, timeOutDuration: 1000, content: "Charge computer", order:this.nextOrder(), enabled: true, cost: {"Patience": 2}, location: "Localhost", prodResource: {"Battery Life": 5}});
+
+     this.create({id:2, timeOutDuration: 200, content: "Check facebook", order:this.nextOrder(), enabled: false, cost: {"Battery Life":5, "Patience":2}, location: "Wifi", prodResource: {"Friends":1.5}});
+
+     this.create({id: 3, timeOutDuration: 100, content: "Watch Videos", order:this.nextOrder(), enabled: true, cost: {"Battery Life":2,"Patience": 2}, location: "Wifi", prodResource: {"Left Arm Strength": 2}});
+
+     this.create({id: 4, timeOutDuration: 100, content: "Play Minesweeper", order:this.nextOrder(), enabled: true, cost: {"Battery Life": 1}, location: "Localhost", prodResource: {"Patience": 5}});
+    }
     }
 
   });

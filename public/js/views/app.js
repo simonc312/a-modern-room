@@ -121,7 +121,7 @@ define([
     while (model = collection.first()) {
       model.destroy();
     }
- 
+    collection.reload();
     },
 
     clearCollections: function(){
@@ -129,7 +129,6 @@ define([
       this.clearCollection(ResourceCollection);
       this.clearCollection(EventCollection);
       this.clearCollection(LocationCollection);
-      
     }
 
 

@@ -2,7 +2,7 @@ define([
   'underscore', 
   'backbone', 
   'storage', 
-  'js/models/Resource'
+  'js/models/resource'
   ], function(_, Backbone, Store, Resource){
 
 	var ResourcesCollection = Backbone.Collection.extend({

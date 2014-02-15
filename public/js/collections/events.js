@@ -30,6 +30,12 @@ define([
     // Events are sorted by newest insertion order.
     comparator: function(Event) {
       return Event.get('order');
+    },
+
+    reload: function(){
+    if(this.length == 0){
+      this.create({content: "Welcome back."})
+    }
     }
 
   });
