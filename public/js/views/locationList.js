@@ -12,7 +12,6 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
       this.listenTo(this.collection, 'add', this.addOneLocation);
       this.listenTo(this.collection, 'add', this.addOneActionList);
       this.listenTo(this.collection, 'reset', this.render);
-      //this.collection.fetch();
     },
 
 

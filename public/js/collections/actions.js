@@ -69,9 +69,9 @@ define([
 
     reload: function(){
       if(this.length == 0){
-        self = this;
+        var self = this;
         $.each(ACTION_LIST,function(index, action){
-          this.create({id: index, timeOutDuration: action.duration, content: action.content,
+          self.create({id: index, timeOutDuration: action.duration, content: action.content,
           order:self.nextOrder(), enabled: action.enabled, cost: action.cost, 
           location: action.location, prodResource: action.resource});
         });

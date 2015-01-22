@@ -43,9 +43,9 @@ define([
 
     reload: function(){
       if(this.length == 0){
-        self =this;
+        var self =this;
         $.each(LOCATION_LIST,function(index, location){
-          this.create({id: index, content: location.name, order: self.nextOrder(),
+          self.create({id: index, content: location.name, order: self.nextOrder(),
            enabled: location.enabled});
         });
       }

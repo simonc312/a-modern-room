@@ -3,8 +3,6 @@ require.config({
     jquery: 'js/libs/jquery/jquery-min',
     underscore: 'js/libs/underscore/underscore-min',
     backbone: 'js/libs/backbone/backbone',
-    // storage has built in support for requirejs
-    // hence, it doesn't need to configured in 'shim'
     storage: 'js/libs/backbone/backbone.localStorage',
     text: 'js/libs/require/text',
     cprogress: 'js/libs/cprogress/cprogress',
