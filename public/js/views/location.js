@@ -23,7 +23,6 @@ define([
 
     render: function() {
       var $el = $(this.el);
-// may need to rename listId to locationId not sure yet 
       $el.data('locationId', this.model.get('id'));
       $el.html(this.template(this.model.toJSON()));
       return this;

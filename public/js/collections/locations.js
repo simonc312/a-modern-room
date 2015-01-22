@@ -6,10 +6,10 @@ define([
   ], function(_, Backbone, Store, Location){
 
   var LOCATION_LIST = [
-    {"name":"Office","enabled":true},
-    {"name":"Desktop","enabled":true},
-    {"name":"Wifi","enabled":true},
-    {"name":"Apps","enabled":true}
+    {name:"Office",enabled:true},
+    {name:"Desktop",enabled:true},
+    {name:"Wifi",enabled:true},
+    {name:"Apps",enabled:true}
     ];
 
 	var LocationsCollection = Backbone.Collection.extend({
@@ -43,7 +43,7 @@ define([
 
     reload: function(){
       if(this.length == 0){
-        var self =this;
+        var self = this;
         $.each(LOCATION_LIST,function(index, location){
           self.create({id: index, content: location.name, order: self.nextOrder(),
            enabled: location.enabled});

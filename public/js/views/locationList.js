@@ -14,8 +14,6 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
       this.listenTo(this.collection, 'reset', this.render);
     },
 
-
-
     addOneLocation: function(location) {
       var NewLocation = new LocationView({ model: location });
       $(this.el).append(NewLocation.render().el);    

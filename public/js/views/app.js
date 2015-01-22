@@ -40,7 +40,6 @@ define([
       this.listenTo(ResourceCollection, 'add', this.addOneResource);
       this.listenTo(EventCollection, 'add', this.addOneEvent);
       this.listenTo(EventCollection, 'change', this.clearOldEvent);
-      this.listenTo(this.collection, 'reset', this.addAll);
       this.listenTo(ActionsCollection, 'reset', this.addAllActions);
       this.listenTo(ResourceCollection, 'reset', this.addAllResources);
       ActionsCollection.fetch();
