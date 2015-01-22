@@ -11,6 +11,12 @@ define([
     // Save all of the Resource items under the `"Resources"` namespace.
     localStorage: new Store('Resources'),
 
+    findByContent: function(content){ 
+      this.find(function(resource) { 
+        return resource.get('content') == content; 
+      });
+    },
+
     // Filter down the list of all Resource items that are not unlocked.
     disabled: function() {
       return this.filter(function(Resource){ return !Resource.get('enabled'); });

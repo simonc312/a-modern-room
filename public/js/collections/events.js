@@ -33,9 +33,9 @@ define([
     },
 
     reload: function(){
-    if(this.length == 0){
-      this.create({content: "Welcome back."})
-    }
+      if(this.length == 0){
+        this.create({content: "Welcome back."})
+      }
     }
 
   });

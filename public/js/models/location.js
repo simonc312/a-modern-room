@@ -24,9 +24,9 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 
     reload: function(){
       if(this.length == 0){
-    this.create({id: 1, content: "Localhost", order: this.nextOrder(), enabled: true});
+    this.create({id: 1, content: "Office", order: this.nextOrder(), enabled: true});
 
-    this.create({id: 2, content: "Wifi", order: this.nextOrder(), enabled: true});
+    this.create({id: 2, content: "Desktop", order: this.nextOrder(), enabled: false});
 }
     }
 

@@ -1,7 +1,3 @@
-// Filename: main.js
-
-// Require.js allows us to configure mappings to paths
-// as demonstrated below:
 require.config({
   paths: {
     jquery: 'js/libs/jquery/jquery-min',
@@ -29,21 +25,20 @@ require.config({
 
 });
 
-require(['js/views/app', 'js/views/locationList', 'js/collections/todos', 'js/collections/actions', 'js/collections/locations','js/collections/resources', 'js/collections/events' ], function(AppView, LocationListView, TodoCollection, ActionCollection, LocationCollection, ResourceCollection, EventCollection){
+require(['js/views/app', 'js/views/locationList', 'js/collections/actions',
+ 'js/collections/locations','js/collections/resources', 'js/collections/events' ],
+ function(AppView, LocationListView, ActionCollection, LocationCollection, ResourceCollection, EventCollection){
   var App = function(){
-    this.collections.todos = TodoCollection;
     this.collections.locations = LocationCollection;
     this.collections.actions = ActionCollection;
     this.collections.resources = ResourceCollection;
     this.collections.events = EventCollection;
-    this.views.app = new AppView({collection: this.collections.todos});
+    this.views.app = new AppView();
     this.views.locationList = new LocationListView({collection: this.collections.locations});
 
   //reload the default models to each collection on page reload
    $.each(this.collections,function(index,value){
-    if(value != TodoCollection){
       value.reload();
-    }
     });
   };
   App.prototype = {

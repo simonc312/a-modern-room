@@ -1,4 +1,4 @@
-define(['underscore', 'backbone'], function(_, Backbone) {
+define(['underscore', 'backbone','js/collections/resources'], function(_, Backbone,Resources) {
   var ActionModel = Backbone.Model.extend({
     
     action: function() { },
@@ -33,6 +33,15 @@ define(['underscore', 'backbone'], function(_, Backbone) {
         function(resourceType,cost){newCostArray[resourceType]= cost+prodResourceAmt*5});
       this.set({cost: newCostArray});
       this.save({cost: newCostArray});  
+    },
+
+    enoughResources: function(){
+      $.each(this.get('cost'),function(resourceType,cost){
+        var availableResource = Resources.findByContent(resourceType);
+        if(availableResource == undefined || availableResource.get('amount') < cost)
+          return false;
+      });
+      return true;
     }
 
   });

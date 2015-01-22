@@ -5,6 +5,13 @@ define([
   'js/models/location'
   ], function(_, Backbone, Store, Location){
 
+  var LOCATION_LIST = [
+    {"name":"Office","enabled":true},
+    {"name":"Desktop","enabled":true},
+    {"name":"Wifi","enabled":true},
+    {"name":"Apps","enabled":true}
+    ];
+
 	var LocationsCollection = Backbone.Collection.extend({
     // Reference to this collection's model.
     model: Location,
@@ -35,11 +42,13 @@ define([
     },
 
     reload: function(){
-       if(this.length == 0){
-        this.create({id: 1, content: "Localhost", order: this.nextOrder(), enabled: true});
-
-        this.create({id: 2, content: "Wifi", order: this.nextOrder(), enabled: true});
-}
+      if(this.length == 0){
+        self =this;
+        $.each(LOCATION_LIST,function(index, location){
+          this.create({id: index, content: location.name, order: self.nextOrder(),
+           enabled: location.enabled});
+        });
+      }
     }
 
   });

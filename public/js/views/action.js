@@ -93,7 +93,9 @@ define([
       var Action = this;
       var actionPerformed = true;
       $.each(ResourceCosts,function(resourceName, cost){
-      // match is the model instance in collection that matches resourceName to check if it is possible to subtract costs without non negative amount. Return a key value pair array of Models and cost to subtract if all matches.checkSubtract(cost) are true 
+      // match is the model instance in collection that matches resourceName to check if it is possible
+      // to subtract costs without non negative amount. Return a key value pair array of Models 
+      //and cost to subtract if all matches.checkSubtract(cost) are true 
         var match = Action.findResource(resourceName);
         if(match.checkSubtract(cost)){
           modelsAndCosts[match.id] = cost;
@@ -129,7 +131,7 @@ define([
                 ResourceArray[resource]=resource.get('amount');}
              else
                 {Action.createResource(prodResource, amount);
-                var eventContent = prodResource + " was made for the first time!";
+                var eventContent = prodResource + " gained for the first time!";
                 Action.createEvent(eventContent);
                 var resource = Action.findResource(prodResource);
                 ResourceArray[resource]=resource.get('amount');                
