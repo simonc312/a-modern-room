@@ -4,14 +4,15 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
     el: '#top-nav',
     tagName: 'ul',
 
-    events: {
-      
+      events: {
+      "click #reset": "clearCollection"
     },
 
     initialize: function() {
       this.listenTo(this.collection, 'add', this.addOneLocation);
       this.listenTo(this.collection, 'add', this.addOneActionList);
       this.listenTo(this.collection, 'reset', this.render);
+      this.collection.fetch();
     },
 
     addOneLocation: function(location) {
@@ -22,9 +23,17 @@ define(['jquery','underscore','backbone','js/views/location'], function($,_,Back
     addOneActionList: function(location){
       $('#action-list').append($('<div id=' + location.get('content') + '></div>'));    
     },
+
+    clearCollection: function(){
+      var model;
+      while (model = this.collection.first()) {
+        model.destroy();
+      }
+      $('#action-list').empty();
+      this.collection.reload();
+    },
     render: function() {
-      var $el = $(this.el)
-      , self = this;
+      var self = this;
       this.collection.each(function(location) {
         self.addOneLocation(location);
         self.addOneActionList(location);

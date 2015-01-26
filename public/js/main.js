@@ -33,8 +33,7 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/actions',
     this.collections.events = EventCollection;
     this.views.app = new AppView();
     this.views.locationList = new LocationListView({collection: this.collections.locations});
-
-  //reload the default models to each collection on page reload
+     //reload the default models to each collection on page reload
    $.each(this.collections,function(index,value){
       value.reload();
     });
@@ -48,6 +47,8 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/actions',
     }
     
   };
+
+  
  window.room = new App();
 
 });

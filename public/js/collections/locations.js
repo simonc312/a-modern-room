@@ -8,8 +8,7 @@ define([
   var LOCATION_LIST = [
     {name:"Office",enabled:true},
     {name:"Desktop",enabled:true},
-    {name:"Wifi",enabled:true},
-    {name:"Apps",enabled:true}
+    {name:"Wifi",enabled:true}
     ];
 
 	var LocationsCollection = Backbone.Collection.extend({

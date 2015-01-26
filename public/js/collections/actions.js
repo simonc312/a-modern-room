@@ -20,7 +20,7 @@ define([
 
     {duration: 200, content: "Check facebook", enabled: false, cost: {"Battery Life":5, "Patience":2}, location: "Wifi", resource: {"Friends":1,"Likes":8}},
     {duration: 300, content: "Watch Netflix", enabled: false, cost: {"Battery Life":2,"Patience": 3}, location: "Wifi", resource: {"Movie Trivia Knowledge": 2}},
-    {duration: 400, content: "Play League of Legends", enabled: false, cost: {"Battery Life": 4, "Patience": 4}, location: "Apps", resource: {"Mouse Click Speed": 5}}
+    {duration: 400, content: "Play League of Legends", enabled: false, cost: {"Battery Life": 4, "Patience": 4}, location: "Wifi", resource: {"Mouse Click Speed": 5}}
   ];
 
 	var ActionsCollection = Backbone.Collection.extend({

@@ -5,13 +5,11 @@ define([
   'js/views/action',
   'js/views/resource',
   'js/views/event',
-  'js/views/locationList',
   'js/collections/actions',
   'js/collections/resources',
   'js/collections/events',
-  'js/collections/locations',
   'text!templates/stats.html'
-  ], function($, _, Backbone, ActionView, ResourceView, EventView, LocationListView, ActionsCollection, ResourceCollection, EventCollection, LocationCollection, statsTemplate){
+  ], function($, _, Backbone, ActionView, ResourceView, EventView, ActionsCollection, ResourceCollection, EventCollection, statsTemplate){
   var AppView = Backbone.View.extend({
 
     // Instead of generating a new element, bind to the existing skeleton of
@@ -49,7 +47,7 @@ define([
     addOneAction: function(action) {
       var view = new ActionView({model: action});
       var actionDivClass = action.get('location');
-      $.elementReady(actionDivClass,function(){$('#'+actionDivClass).append(view.render().el);});
+      $('#'+actionDivClass).append(view.render().el);
     },
     addOneResource: function(resource) {
       var view = new ResourceView({model: resource});
@@ -81,7 +79,6 @@ define([
     clearCollections: function(){
       this.clearCollection(ResourceCollection);
       this.clearCollection(EventCollection);
-      this.clearCollection(LocationCollection);
       this.clearCollection(ActionsCollection);
     }
 
