@@ -79,10 +79,10 @@ define([
     },
 
     clearCollections: function(){
-      this.clearCollection(ActionsCollection);
       this.clearCollection(ResourceCollection);
       this.clearCollection(EventCollection);
       this.clearCollection(LocationCollection);
+      this.clearCollection(ActionsCollection);
     }
 
 
