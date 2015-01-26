@@ -40,7 +40,6 @@ define([
       this.listenTo(EventCollection, 'change', this.clearOldEvent);
       this.listenTo(ActionsCollection, 'reset', this.addAllActions);
       this.listenTo(ResourceCollection, 'reset', this.addAllResources);
-      ActionsCollection.fetch();
       ResourceCollection.fetch();
     },
 
