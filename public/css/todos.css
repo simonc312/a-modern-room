@@ -62,7 +62,10 @@ body {
   float: right;
   font-size: 20px;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 10px;
+  margin-bottom: 25px;
+  position:fixed;
+  top:0;
 }
 
 #create-todo {
