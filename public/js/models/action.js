@@ -1,8 +1,7 @@
-define(['underscore', 'backbone','js/collections/resources'], function(_, Backbone,Resources) {
-  var ActionModel = Backbone.Model.extend({
+define(['underscore', 'backbone','js/models/base','js/collections/resources'], function(_, Backbone,BaseModel,Resources) {
+  var ActionModel = BaseModel.extend({
     
-    action: function() { },
-    eventDescription: function() {return "Event Description"},
+    Action: function() { },
     //associated location where action is enabled
     location: "location",
     prodResource: {"resource":1}, //resource produced and amt
@@ -15,17 +14,6 @@ define(['underscore', 'backbone','js/collections/resources'], function(_, Backbo
       cost: {"Battery Life":0} // some actions will cost more with usage or availablility of resources cost needs to be array of resourceTypes and costs
     },
 
-    // Ensure that each Action created has `content`.
-    initialize: function() {
-      if (!this.get('content')) {
-        this.set({'content': this.defaults.content});
-      }
-    },
-
-    // Remove this Action from *localStorage*
-    clear: function() {
-      this.destroy();
-    },
     //adjust cost to how many resources produced by action
     changeCost: function(prodResourceAmt){
       var newCostArray = {};

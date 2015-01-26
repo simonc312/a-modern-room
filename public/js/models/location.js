@@ -1,33 +1,9 @@
-define(['underscore', 'backbone'], function(_, Backbone) {
-  var LocationModel = Backbone.Model.extend({
+define(['underscore', 'backbone','js/models/base'], function(_, Backbone,BaseModel) {
+  var LocationModel = BaseModel.extend({
     
     Location: function() { },
 
-    eventDescription: function() {return "Event Description"},
-    // Default attributes for the todo.
-    defaults: {
-      content: 'empty Location...',
-      enabled: false
-    },
-
-    // Ensure that each Location created has `content`.
-    initialize: function() {
-      if (!this.get('content')) {
-        this.set({'content': this.defaults.content});
-      }
-    },
-
-    // Remove this Location from *localStorage*
-    clear: function() {
-      this.destroy();
-    },
-
     reload: function(){
-      if(this.length == 0){
-    this.create({id: 1, content: "Office", order: this.nextOrder(), enabled: true});
-
-    this.create({id: 2, content: "Desktop", order: this.nextOrder(), enabled: false});
-}
     }
 
   });
