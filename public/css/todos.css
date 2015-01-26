@@ -96,9 +96,6 @@ body {
 	margin-top: 10px;
 }
 
-body :after{
-	height: 0;
-}
 #todo-list li {
 	padding: 12px 20px 11px 0;
 	position: relative;
