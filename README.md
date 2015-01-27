@@ -1,4 +1,4 @@
-[a-modern-room](a-modern-room.herokuapp.com)
+[a-modern-room](https://a-modern-room.herokuapp.com)
 =============
 
 Text based game inspired by a Firelit Room
