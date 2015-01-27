@@ -6,7 +6,7 @@ require.config({
     storage: 'js/libs/backbone/backbone.localStorage',
     text: 'js/libs/require/text',
     cprogress: 'js/libs/cprogress/cprogress',
-    elementready: 'js/libs/elementready/elementready'
+    nprogress: 'js/libs/nprogress'
   },
 
   shim: {
@@ -24,8 +24,8 @@ require.config({
 });
 
 require(['js/views/app', 'js/views/locationList', 'js/collections/actions',
- 'js/collections/locations','js/collections/resources', 'js/collections/events' ],
- function(AppView, LocationListView, ActionCollection, LocationCollection, ResourceCollection, EventCollection){
+ 'js/collections/locations','js/collections/resources', 'js/collections/events', 'js/libs/nprogress' ],
+ function(AppView, LocationListView, ActionCollection, LocationCollection, ResourceCollection, EventCollection, NProgress){
   var App = function(){
     this.collections.locations = LocationCollection;
     this.collections.actions = ActionCollection;
@@ -47,8 +47,8 @@ require(['js/views/app', 'js/views/locationList', 'js/collections/actions',
     }
     
   };
-
-  
- window.room = new App();
+  var np = NProgress;
+  $(document).ready(function(){np.start()});
+  window.room = new App();
 
 });

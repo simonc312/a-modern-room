@@ -1,5 +1,5 @@
 //LocationListView takes in collection of locations
-define(['jquery','underscore','backbone','js/views/location','js/collections/actions'], function($,_,Backbone,LocationView,ActionCollection) {
+define(['jquery','underscore','backbone','js/views/location','js/collections/actions','js/libs/nprogress'], function($,_,Backbone,LocationView,ActionCollection,NProgress) {
   var LocationListView = Backbone.View.extend({ 
     el: '#top-nav',
     tagName: 'ul',
@@ -14,6 +14,7 @@ define(['jquery','underscore','backbone','js/views/location','js/collections/act
       this.listenTo(this.collection, 'reset', this.render);
       this.collection.fetch();
       ActionCollection.fetch();
+      NProgress.done();
     },
 
     addOneLocation: function(location) {

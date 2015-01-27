@@ -27,6 +27,7 @@ pointer-events: none;
 .action-content.performing {
 cursor: progress;
 pointer-events: none;
+color: lightgrey;
 }
 
 .action-content.performing.active {

@@ -2,9 +2,8 @@ define([
   'jquery', 
   'underscore', 
   'backbone',
-  'cprogress',
   'text!templates/resource.html'
-  ], function($, _, Backbone, cprogress, ResourceTemplate){
+  ], function($, _, Backbone, ResourceTemplate){
   var ResourceView = Backbone.View.extend({
 
     //... is a list tag.
